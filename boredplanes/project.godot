@@ -12,6 +12,7 @@ config_version=5
 
 config/name="boredplanes"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/bg_color=Color(0.811437, 0.954557, 1, 1)
 config/icon="res://icon.svg"
 
 [rendering]
