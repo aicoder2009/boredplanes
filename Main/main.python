@@ -1,11 +1,16 @@
 # Example file showing a basic pygame "game loop"
+from time import sleep
 import pygame
+import pygame_menu
+from pygame_menu import themes
 
 # pygame setup
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
+pygame.display.set_caption('boredplanes') #window title for the game
+pygame.display.set_icon() #icon for the game
 
 while running:
     # poll for events
@@ -15,9 +20,15 @@ while running:
             running = False
 
     # fill the screen with a color to wipe away anything from last frame
-    screen.fill("purple")
+    screen.fill("lightblue")
 
     # RENDER YOUR GAME HERE
+    mainmenu = pygame_menu.Menu('Welcome', 600, 400, 
+                                 theme=themes.THEME_SOLARIZED)
+    mainmenu.add.text_input('Name: ', default='username', maxchar=20)
+    mainmenu.add.button('Play', start_the_game)
+    mainmenu.add.button('Levels', level_menu)
+    mainmenu.add.button('Quit', pygame_menu.events.EXIT)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
